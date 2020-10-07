@@ -22,9 +22,9 @@ bool again() {
     char doAgain;
     bool reloop;
 
-    printf("Would you like to do this again?\n");
+    fprintf(stdout, "Would you like to do this again?\n");
     fflush(stdin);
-    scanf(" %c", &doAgain);
+    fscanf(stdin, " %c", &doAgain);
 
     if (tolower(doAgain) == 'y') {
         reloop = true;
@@ -72,12 +72,12 @@ double getInput(char string[], double minVal, double maxVal) {
     double inputVal;
 
     do {
-        printf("%s", string);
-        scanf("%lf", &inputVal);
+        fprintf(stdout, "%s", string);
+        fscanf(stdin, "%lf", &inputVal);
 
         if ((inputVal >= maxVal) || (inputVal <= minVal)) {
-            printf("Your input is outside of the range %.2lf to %.2lf.\n", minVal, maxVal);
-            printf("Please re-enter.\n");
+            fprintf(stdout, "Your input is outside of the range %.2lf to %.2lf.\n", minVal, maxVal);
+            fprintf(stdout, "Please re-enter.\n");
         }
         else {
             break;
@@ -101,22 +101,22 @@ void printTable(double minFarenheit, double maxFarenheit, double stepFarenheit) 
     double celsiusVal;
     double kelvinVal;
 
-    printf("\n\n");
-    printf("|-----------------------------|\n");
-    printf("|                             |\n");
-    printf("|   Temperature Conversions   |\n");
-    printf("|                             |\n");
-    printf("|-----------------------------|\n");
-    printf("|Farenheit| Celsius | Kelvin  |\n");
-    printf("|-----------------------------|\n");
+    fprintf(stdout, "\n\n");
+    fprintf(stdout, "|-----------------------------|\n");
+    fprintf(stdout, "|                             |\n");
+    fprintf(stdout, "|   Temperature Conversions   |\n");
+    fprintf(stdout, "|                             |\n");
+    fprintf(stdout, "|-----------------------------|\n");
+    fprintf(stdout, "|Farenheit| Celsius | Kelvin  |\n");
+    fprintf(stdout, "|-----------------------------|\n");
 
     for (double i = minFarenheit; i < (maxFarenheit + .001); i += stepFarenheit) {
         farenheitVal = i;
         celsiusVal = fToC(farenheitVal);
         kelvinVal = cToK(celsiusVal);
 
-        printf("|%9.2lf|%9.2lf|%9.2lf|\n", farenheitVal, celsiusVal, kelvinVal);
+        fprintf(stdout, "|%9.2lf|%9.2lf|%9.2lf|\n", farenheitVal, celsiusVal, kelvinVal);
     }
 
-    printf("|-----------------------------|\n");
+    fprintf(stdout, "|-----------------------------|\n");
 }
